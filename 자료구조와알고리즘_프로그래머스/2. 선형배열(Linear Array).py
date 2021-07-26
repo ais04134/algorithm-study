@@ -20,10 +20,11 @@ x = 92
 
 def solution(L, x):
     for i in range(len(L)):
+    # for i, name in enumerate(L):
         if L[-1] < x:
             L.append(x)
 
-        elif L[i] >= x:
+        elif L[i] > x:
             L.insert(i, x)
             break
 
