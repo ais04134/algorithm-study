@@ -137,7 +137,7 @@ def solution(new_id):
 
     return new_id
 
-
+print(solution(new_id))
 
 
 
