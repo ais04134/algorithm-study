@@ -44,29 +44,7 @@ def solution(skill, skill_trees):
             if z != name:
                 answer -= 1
                 break
-    return amswer
-
-
-
-    print(answer)
-
-
-
-
-
-# def solution(skill, skill_trees):
-#     answer = 0
-#     for i in skill_trees:
-#         a = []
-#         for j in range(len(skill)):
-#             if i.find(skill[j]) != -1:
-#                 a.append(i.find(skill[j]))
-#         print(a)
-#         if a.sort() is True:
-#             answer += 1
-#
-#     return answer
-
+    return answer
 
 
 print(solution(skill,skill_trees))
