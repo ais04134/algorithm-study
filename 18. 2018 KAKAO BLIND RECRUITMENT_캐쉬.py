@@ -41,15 +41,13 @@ def solution(cacheSize, cities):
         if data not in cache:
             if len(cache) < cacheSize:
                 cache.append(data)
-                time += 5
             else:
                 if cache != []:
                     cache.pop(0)
                     cache.append(data)
-                    time += 5
                 else:
                     cache.append(data)
-                    time += 5
+            time += 5
         # Hit!
         else:
             cache.pop(cache.index(data))
