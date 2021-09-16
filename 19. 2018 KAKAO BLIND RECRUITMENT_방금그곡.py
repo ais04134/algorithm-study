@@ -35,40 +35,84 @@ m	musicinfos	answer
 
 '''
 
-musicinfos = ["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF","12:00,12:14,HELLO,CDEFGAB"]
-m = "ABCDEFG"
-from datetime import datetime
+m = "CCB"
+musicinfos = ["03:00,03:10,FOO,CCB#CCB", "04:00,04:08,BAR,ABC"]
+#
+# def solution(m, musicinfos):
+#     same_pitch = []
+#     m = m.replace("C#", "c").replace("D#", "d").replace("F#", "f").replace("G#", "g").replace("A#", "a")
+#     for i in musicinfos:
+#         music_info = i.split(',')
+#         music_info[-1] = music_info[-1].replace("C#", "c").replace("D#", "d").replace("F#", "f").replace("G#", "g").replace("A#", "a")
+#         time_1 = music_info[0][:2]*60+music_info[0][3:5]
+#         time_2 = music_info[1][:2]*60+music_info[1][3:5]
+#         time = int(time_2) - int(time_1)
+#         music_info[-1] = music_info[-1]*((time//len(music_info[-1]))+1)
+#         if music_info[-1].find(m) != -1:
+#             same_pitch.append(music_info)
+#
+#     if same_pitch == []: return "(None)"
+#     else:
+#         same_pitch_time = []
+#         for z in same_pitch:
+#             time_1 = z[0][:2] * 60 + z[0][3:5]
+#             time_2 = z[1][:2] * 60 + z[1][3:5]
+#             time = int(time_2) - int(time_1)
+#             same_pitch_time.append(time)
+#         answer = same_pitch_time.index(max(same_pitch_time))
+#         return same_pitch[answer][2]
+#
+#
+# print(solution(m,musicinfos))
 
-def solution(m, musicinfos):
-    same_pitch = []
-    for i in musicinfos:
-        music_info = i.split(',')
-        if len(m) > len(music_info[-1]):
-            for _ in music_info[-1]:
-                if m.find(music_info[-1]) != -1:
-                    same_pitch.append(music_info)
-                    break
-                music_info[-1] = music_info[-1][-1] + music_info[-1][:-1]
-                # 노래 음을 반복적으로 회전하며 들었던 음과 같은 값을 찾는다.
-        else:
-            for _ in m:
-                if music_info[-1].find(m) != -1:
-                    same_pitch.append(music_info)
-                    break
-                m = m[-1] + m[:-1]
 
+# import itertools
+#
+# def solution(m, musicinfos):
+#     same_pitch = []
+#     m = m.replace("C#", "c").replace("D#", "d").replace("F#", "f").replace("G#", "g").replace("A#", "a")
+#     for i in musicinfos:
+#         music_info = i.split(',')
+#         music_info[-1] = music_info[-1].replace("C#", "c").replace("D#", "d").replace("F#", "f").replace("G#", "g").replace("A#", "a")
+#         time_1 = music_info[0][:2]*60+music_info[0][3:5]
+#         time_2 = music_info[1][:2]*60+music_info[1][3:5]
+#         time = int(time_2) - int(time_1)
+#         music_info.append(time)
+#         emp_pool = itertools.cycle(music_info[-2])
+#         if time > len(music_info[-2]):
+#             for _ in range(time-len(music_info[-2])):
+#                 music_info[-2] = music_info[-2] + next(emp_pool) # 반복자를 통하여 재생된 시간만큼 멜로디 추가
+#         if music_info[-2].find(m) != -1:
+#             same_pitch.append(music_info)
+#     if same_pitch == []: return (None)
+#     else: return max(same_pitch, key=lambda x: x[-1])[2] # 용의 천재적인 한줄
 
-    if len(same_pitch) == 1: return same_pitch[0][2]
-    elif same_pitch == []: return "(None)"
-    else:
-        same_pitch_time = []
-        for z in same_pitch:
-            time_1 = datetime.strptime(z[0],"%H:%M")
-            time_2 = datetime.strptime(z[1],"%H:%M")
-            time = time_2 - time_1
-            same_pitch_time.append(time)
-        answer = same_pitch_time.index(max(same_pitch_time))
-        return same_pitch[answer][2]
-
+# emp_pool ~~ 이런식으로 처리해준걸 다르게 처리해야되나?... 이게 시간 복잡도가 매우 높은가 싶기도하고
 
 print(solution(m,musicinfos))
+
+
+def solution(m, musicinfos):
+    dic = {}
+    # 사용되는 음이 아닌 문자로 변환
+    m = m.replace('C#', 'c').replace('D#', 'd').replace('F#', 'f').replace('G#', 'g').replace('A#', 'a')
+    for info in musicinfos:
+        # 콤마를 기준으로 변수에 저장
+        start, end, title, music = info.split(',')
+        start = [int(i) for i in start.split(':')]
+        end = [int(i) for i in end.split(':')]
+        # 끝난시각-시작시간을 분단위로 저장
+        time = (end[0] - start[0]) * 60 + (end[1] - start[1])
+        music = music.replace('C#', 'c').replace('D#', 'd').replace('F#', 'f').replace('G#', 'g').replace('A#', 'a')
+        # 몫, 나머지를 이용해 실제로 재생된 멜로디 저장
+        music = music * (time // len(music)) + music[:time % len(music) + 1]
+        dic[title] = music
+
+    answer = ["", ""]
+    for key, value in dic.items():
+        if m in value:
+            if len(answer[1]) < len(value):
+                answer[0] = key
+                answer[1] = value
+
+    return "(None)" if len(answer[0]) == 0 else answer[0]  # 내 코드랑 거진 유사한데 시간 복잡도가 낮다...
