@@ -79,10 +79,6 @@ def solution(s):
 print(len("4abcdededededede"))
 
 
-
-
-
-
 print(solution(s))
 
 
