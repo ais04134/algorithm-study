@@ -82,7 +82,6 @@ def solution(m, n, board):
         board.reverse()
 
 
-
 # def pop_num(b, m, n):
 #     pop_set = set()
 #     # search
