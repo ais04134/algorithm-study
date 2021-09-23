@@ -58,13 +58,11 @@ def solution(str1, str2):
 
     for i in range(len(str1)):
         str1_list.append(str1[i-1:i+1])
-    str1_list = str1_list[1:]
-    str1_list = list(filter(positive,str1_list))
+    str1_list = list(filter(positive,str1_list[1:]))
 
     for i in range(len(str2)):
         str2_list.append(str2[i-1:i+1])
-    str2_list = str2_list[1:]
-    str2_list = list(filter(positive, str2_list)) # 영문자가 아닌 값을을 제거하는 함수
+    str2_list = list(filter(positive, str2_list[1:])) # 영문자가 아닌 값을을 제거하는 함수
 
     for name in str1_list:
         empty_set += min(str1_list.count(name), str2_list.count(name))
@@ -79,6 +77,5 @@ def solution(str1, str2):
     else: return int((empty_set/union)*65536)
 
 print(solution(str1,str2))
-
 
 
