@@ -36,7 +36,7 @@ m	musicinfos	answer
 '''
 
 m = "CCB"
-musicinfos = ["03:00,03:10,FOO,CCB#CCB", "04:00,04:08,BAR,ABC"]
+musicinfos = ["03:00,03:10,FOO,CC#BCCB", "04:00,04:08,BAR,ABC"]
 #
 # def solution(m, musicinfos):
 #     same_pitch = []
@@ -66,29 +66,56 @@ musicinfos = ["03:00,03:10,FOO,CCB#CCB", "04:00,04:08,BAR,ABC"]
 # print(solution(m,musicinfos))
 
 
-# import itertools
-#
-# def solution(m, musicinfos):
-#     same_pitch = []
-#     m = m.replace("C#", "c").replace("D#", "d").replace("F#", "f").replace("G#", "g").replace("A#", "a")
-#     for i in musicinfos:
-#         music_info = i.split(',')
-#         music_info[-1] = music_info[-1].replace("C#", "c").replace("D#", "d").replace("F#", "f").replace("G#", "g").replace("A#", "a")
-#         time_1 = music_info[0][:2]*60+music_info[0][3:5]
-#         time_2 = music_info[1][:2]*60+music_info[1][3:5]
-#         time = int(time_2) - int(time_1)
-#         music_info.append(time)
-#         emp_pool = itertools.cycle(music_info[-2])
-#         if time > len(music_info[-2]):
-#             for _ in range(time-len(music_info[-2])):
-#                 music_info[-2] = music_info[-2] + next(emp_pool) # 반복자를 통하여 재생된 시간만큼 멜로디 추가
-#         if music_info[-2].find(m) != -1:
-#             same_pitch.append(music_info)
-#     if same_pitch == []: return (None)
-#     else: return max(same_pitch, key=lambda x: x[-1])[2] # 용의 천재적인 한줄
+
+import itertools
+
+def solution(m, musicinfos):
+    same_pitch = []
+    m = m.replace("C#", "c").replace("D#", "d").replace("F#", "f").replace("G#", "g").replace("A#", "a")
+    for i in musicinfos:
+        music_info = i.split(',')
+        music_info[-1] = music_info[-1].replace("C#", "c").replace("D#", "d").replace("F#", "f").replace("G#", "g").replace("A#", "a")
+        time_1 = music_info[0][:2]*60+music_info[0][3:5]
+        time_2 = music_info[1][:2]*60+music_info[1][3:5]
+        time = int(time_2) - int(time_1)
+        music_info.append(time)
+        emp_pool = itertools.cycle(music_info[-2])
+        if time > len(music_info[-2]):
+            for _ in range(time-len(music_info[-2])):
+                music_info[-2] = music_info[-2] + next(emp_pool) # 반복자를 통하여 재생된 시간만큼 멜로디 추가
+                print(music_info)
+        if music_info[-2].find(m) != -1:
+            same_pitch.append(music_info)
+    if same_pitch == []:
+        return "(None)"
+    else:
+        answer = max(same_pitch, key=lambda x: x[-1])[2]
+        return answer
+
+
+
+def solution(m, musicinfos):
+    same_pitch = []
+    m = m.replace("C#", "c").replace("D#", "d").replace("F#", "f").replace("G#", "g").replace("A#", "a")
+    for i in musicinfos:
+        music_info = i.split(',')
+        music_info[-1] = music_info[-1].replace("C#", "c").replace("D#", "d").replace("F#", "f").replace("G#", "g").replace("A#", "a")
+        time_1 = music_info[0][:2]*60+music_info[0][3:5]
+        time_2 = music_info[1][:2]*60+music_info[1][3:5]
+        time = int(time_2) - int(time_1)
+        music_info.append(time)
+        if time > len(music_info[-2]):
+            music_info[-2] = music_info[-2]*(time//len(music_info[-2])) + music_info[-2][:time% len(music_info[-2]) +1]
+        if m in music_info[-2]:
+            same_pitch.append(music_info)
+    if same_pitch == []:
+        return "(None)"
+    elif len(same_pitch) == 1:
+        return same_pitch[0][2]
+    else:
+        return sorted(same_pitch, key=lambda x: x[-1])[2] # 용의 천재적인 한줄
 
 # emp_pool ~~ 이런식으로 처리해준걸 다르게 처리해야되나?... 이게 시간 복잡도가 매우 높은가 싶기도하고
-
 print(solution(m,musicinfos))
 
 
