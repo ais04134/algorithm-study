@@ -16,3 +16,9 @@ def solution(files):
         print(v)
 
 print(solution(files))
+
+
+
+
+import re
+def solution(files): return [''.join(s) for s in sorted([re.split(r"([0-9]+)", s) for s in files], key=lambda x: (x[0].lower(), int(x[1])))]
