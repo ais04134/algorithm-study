@@ -1,0 +1,45 @@
+https://boj.kr/11725   [S2] 트리의 부모 찾기
+https://boj.kr/11723   [S5] 집합
+https://boj.kr/11724   [S2] 연결 요소의 개수
+https://boj.kr/10211   [S4] Maximum Subarray
+https://boj.kr/23630   [S2] 가장 긴 부분 수열 구하기
+https://boj.kr/5397    [S3] 키로거
+https://boj.kr/18111   [S2] 마인크래프트
+https://boj.kr/1654    [S3] 랜선 자르기
+https://boj.kr/24462   [S1] 일어나... 코딩해야지...
+https://boj.kr/1992    [S1] 쿼드트리
+https://boj.kr/2156    [S1] 포도주 시식
+https://boj.kr/11053   [S2] 가장 긴 증가하는 부분 수열
+https://boj.kr/2448    [G4] 별 찍기 - 11
+https://boj.kr/3020    [G5] 개똥벌레
+https://boj.kr/2206    [G4] 벽 부수고 이동하기
+https://boj.kr/2580    [G4] 스도쿠
+https://boj.kr/17144   [G4] 미세먼지 안녕!
+https://boj.kr/16236   [G3] 아기 상어
+https://boj.kr/12851   [G4] 숨바꼭질 2
+https://boj.kr/17404   [G4] RGB거리 2
+https://boj.kr/16437   [G3] 양 구출 작전
+https://boj.kr/1753    [G4] 최단경로
+https://boj.kr/2263    [G2] 트리의 순회
+https://boj.kr/16572   [P5] Pixel Triangles # https://driip.me/65d9b58c-bf02-44bf-8fba-54d394ed21e0 # https://yiyj1030.tistory.com/489
+https://boj.kr/1655    [G2] 가운데를 말해요
+https://boj.kr/2629    [G3] 양팔저울
+https://boj.kr/11003   [G1] 최솟값 찾기
+https://boj.kr/24042   [G1] 횡단보도
+https://boj.kr/3015    [G1] 오아시스 재결합
+https://boj.kr/1520    [G3] 내리막 길
+
+얘들은 보너스인 안풀어도 되는
+https://boj.kr/15729   [S2] 방탈출
+https://boj.kr/17626   [S3] Four Squares
+https://boj.kr/1146    [P5] 지그재그 서기
+https://boj.kr/13705   [D5] Ax+Bsin(x)=C # https://pythoncpa.tistory.com/6 참고
+
+https://www.acmicpc.net/problem/14786
+
+추가문제 
+https://www.acmicpc.net/problem/5541 [P3] Nails
+https://www.acmicpc.net/problem/16436 [P3] 얼룩말 아트
+
+첼린지 
+https://ilyoan.tistory.com/entry/BOJ-10350-%EC%9D%80%ED%96%89-IMO-1986

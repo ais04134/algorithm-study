@@ -13,7 +13,7 @@ class LinkedList:
         self.head = None
         self.tail = None
 
-    def getAt(self, pos):
+    def getAt(self, pos): # pos <- k 번째에 해당함
         if pos < 1 or pos > self.nodeCount:
             return None
         i = 1
