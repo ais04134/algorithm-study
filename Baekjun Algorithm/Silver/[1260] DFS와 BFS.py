@@ -1,4 +1,6 @@
+import sys
 from collections import deque
+input = sys.stdin.readline
 
 n, m, v = map(int, input().split())
 graph =[[False] * (n+1) for _ in range(n+1)]
